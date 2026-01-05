@@ -525,8 +525,9 @@
             }
 
             // Pega as primeiras X entradas (já deve estar ordenada de forma decrescente na planilha)
-            const quantidade = Math.min(config.quantidadeEntradas + 1, rows.length);
-            const entradasRecentes = rows.slice(1, quantidade);
+            const quantidade = Math.min(config.quantidadeEntradas, rows.length - 1);
+            // const entradasRecentes = rows.slice(1, quantidade);
+            const entradasRecentes = rows.slice(1).slice(-quantidade).reverse();
 
             let html = '';
 
@@ -555,8 +556,10 @@
             }
 
             // Pega as primeiras X saídas (já deve estar ordenada de forma decrescente na planilha)
-            const quantidade = Math.min(config.quantidadeSaidas + 1, rows.length);
-            const saidasRecentes = rows.slice(1, quantidade);
+            // const quantidade = Math.min(config.quantidadeSaidas + 1, rows.length);
+            // const saidasRecentes = rows.slice(1, quantidade);
+            const quantidade = Math.min(config.quantidadeSaidas, rows.length - 1);
+            const saidasRecentes = rows.slice(1).slice(-quantidade).reverse();
 
             let html = '';
 
@@ -595,4 +598,5 @@
         loadData();
     </script>
 </body>
+
 </html>
